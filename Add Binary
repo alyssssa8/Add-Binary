@@ -1,0 +1,26 @@
+class Solution
+{
+public:
+    string addBinary(string a, string b)
+    {
+        string ans = "";
+        int newNum = 0;
+        int i = a.size() - 1;
+        int j = b.size() - 1;   
+        while(i >= 0 || j >= 0 || newNum == 1)
+        {
+            //newNum will get the real integer
+            if ( i >= 0 ){
+                newNum+=a[i]-'0';  
+                i--;
+            }      
+            if (j >= 0){
+                newNum += b[j] - '0';
+                j--;
+            }        
+            ans = char(newNum % 2 + '0') + ans;  // pay attention on the char() function
+            newNum /= 2; //to check if there is a carry on!
+        }       
+        return ans;
+    }
+};
